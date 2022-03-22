@@ -3,13 +3,14 @@
 [ext_resource path="res://Player.gd" type="Script" id=2]
 
 [sub_resource type="CapsuleShape2D" id=5]
-height = 8.0
+height = 18.0
 
 [sub_resource type="StreamTexture" id=2]
 flags = 4
-load_path = "res://.import/Sprite-0003- miner.png-04b3eb14e3f7eeabf15e5462fc5cfee6.stex"
+load_path = "res://.import/Justinpxl.png-20c6ee3689582f6ebfebacbc84804c0c.stex"
 
 [sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 156.381, 113.479 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 6, 2.5 )
@@ -20,19 +21,19 @@ collision_mask = 3
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -9, 30 )
+position = Vector2( -8, 32 )
 shape = SubResource( 5 )
 
-[node name="Arab" type="Sprite" parent="."]
-position = Vector2( -8, 32 )
-scale = Vector2( 0.563125, 0.465062 )
+[node name="P2" type="Sprite" parent="."]
+position = Vector2( -6, 30 )
+scale = Vector2( 0.0338638, 0.0264365 )
 z_index = -1
 texture = SubResource( 2 )
 
-[node name="Sword Hit" type="Area2D" parent="Arab"]
+[node name="Sword Hit" type="Area2D" parent="P2"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Arab/Sword Hit"]
-position = Vector2( 22.069, 4.97997 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P2/Sword Hit"]
+position = Vector2( 324.831, -226.958 )
 shape = SubResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="."]
