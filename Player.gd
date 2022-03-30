@@ -11,7 +11,7 @@ var velocity : Vector2 = Vector2() #can hold (x,y)
 var isGrounded = true;
 var isJumping = false;
 
-onready var sprite : Sprite = get_node("Arab") #references the sprite node (the arab)
+onready var sprite = $P1  #references the sprite node
 
 #func _check_is_grounded():
 #	for raycast in raycasts.get_children():
@@ -29,16 +29,15 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, 0,0.2)
 		#$AnimationPlayer.play("Idle")
+		
 	#applies the velocity
 	velocity = move_and_slide(velocity, Vector2.UP)
-	#changes the direction the sprite is looking
 	if velocity.x > 0:
-		sprite.flip_h = true
-		#$AnimationPlayer.play("Run")
-	elif velocity.x < 0:
 		sprite.flip_h = false
 		#$AnimationPlayer.play("Run")
-		
+	elif velocity.x < 0:
+		sprite.flip_h = true
+		#$AnimationPlayer.play("Run")
 	#controls gravity
 	velocity.y += gravity   #* delta
 	if velocity.y > fallSpeed:

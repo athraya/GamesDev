@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Justinpxl.png-20c6ee3689582f6ebfebacbc84804c0c.stex"
+path="res://.import/Sprite-0003-minerpunch2.png-285bd0587fdf3a259186a52ad9520c62.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Justinpxl.png"
-dest_files=[ "res://.import/Justinpxl.png-20c6ee3689582f6ebfebacbc84804c0c.stex" ]
+source_file="res://Assets/Sprite-0003-minerpunch2.png"
+dest_files=[ "res://.import/Sprite-0003-minerpunch2.png-285bd0587fdf3a259186a52ad9520c62.stex" ]
 
 [params]
 

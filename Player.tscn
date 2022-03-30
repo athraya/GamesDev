@@ -1,18 +1,31 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
+[ext_resource path="res://Assets/Sprite-0003-minerpunch2.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprite-0002-minerpunch1.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprite-0003- miner.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=5]
+radius = 13.0
 height = 8.0
 
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/Sprite-0003- miner.png-04b3eb14e3f7eeabf15e5462fc5cfee6.stex"
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 3 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Punch",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=6]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 6, 2.5 )
+extents = Vector2( 8.5, 2.25 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 3
@@ -23,15 +36,17 @@ script = ExtResource( 2 )
 position = Vector2( -9, 30 )
 shape = SubResource( 5 )
 
-[node name="Arab" type="Sprite" parent="."]
-position = Vector2( -8, 32 )
+[node name="P1" type="AnimatedSprite" parent="."]
+position = Vector2( -8, 29 )
 scale = Vector2( 0.563125, 0.465062 )
 z_index = -1
-texture = SubResource( 2 )
+frames = SubResource( 7 )
+animation = "Punch"
 
-[node name="Sword Hit" type="Area2D" parent="Arab"]
+[node name="Sword Hit" type="Area2D" parent="P1"]
+position = Vector2( 3.55161, 0 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Arab/Sword Hit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="P1/Sword Hit"]
 position = Vector2( 22.069, 4.97997 )
 shape = SubResource( 6 )
 
@@ -39,6 +54,6 @@ shape = SubResource( 6 )
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -9, 45 )
+position = Vector2( -6, 44 )
 shape = SubResource( 4 )
 one_way_collision = true
