@@ -7,7 +7,7 @@ var fallSpeed : int = 325
 var gravity : int = 20
 var accleration : int = 200
 var velocity : Vector2 = Vector2() #can hold (x,y)
-
+var isAttacking = false;
 var isGrounded = true;
 var isJumping = false;
 
@@ -28,7 +28,8 @@ func _physics_process(delta):
 		velocity.x += accleration
 	else:
 		velocity.x = lerp(velocity.x, 0,0.2)
-		#$AnimationPlayer.play("Idle")
+		if isAttacking == false:
+			sprite.play("Idle")
 		
 	#applies the velocity
 	velocity = move_and_slide(velocity, Vector2.UP)
@@ -54,10 +55,17 @@ func _physics_process(delta):
 			isJumping = true;
 	if isJumping and velocity.y >= 0:
 		isJumping
-	
+	if Input.is_action_just_pressed("P1_Attack"):
+		sprite.play("Punch");
+		isAttacking = true;
 	
 #	if !is_on_floor():
 	#	if velocity.y < 0:
 	#		#$AnimationPlayer.play("Jump")
 	#	elif velocity.y > 0 :
 	#		#$AnimationPlayer.play("Fall")
+
+
+func _on_P1_animation_finished():
+	if sprite.animation == "Punch":
+		isAttacking = false;
