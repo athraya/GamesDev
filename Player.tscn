@@ -22,6 +22,7 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 13.879, 10 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 8.5, 2.25 )
@@ -41,13 +42,14 @@ scale = Vector2( 0.563125, 0.465062 )
 z_index = -1
 frames = SubResource( 7 )
 animation = "Punch"
-frame = 2
+playing = true
 
 [node name="Sword Hit" type="Area2D" parent="P1"]
 position = Vector2( 3.55161, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="P1/Sword Hit"]
-position = Vector2( 22.069, 4.97997 )
+position = Vector2( 33.7403, 8.60101 )
+scale = Vector2( 1, 1 )
 shape = SubResource( 6 )
 
 [node name="Area2D" type="Area2D" parent="."]
