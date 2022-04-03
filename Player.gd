@@ -26,6 +26,7 @@ func _physics_process(delta):
 		velocity.x -= accleration
 	elif Input.is_action_pressed("move_right"):
 		velocity.x += accleration
+		sprite.play("Running")
 	else:
 		velocity.x = lerp(velocity.x, 0,0.2)
 		if isAttacking == false:
