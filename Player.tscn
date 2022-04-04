@@ -1,16 +1,22 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Assets/Sprite-0003-minerpunch2.png" type="Texture" id=1]
 [ext_resource path="res://Player.gd" type="Script" id=2]
 [ext_resource path="res://Assets/Sprite-0002-minerpunch1.png" type="Texture" id=3]
 [ext_resource path="res://Assets/Sprite-0003- miner.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sprites part2/Sprite-0009-miner1-running.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites part2/Sprite-0013-miner1gun.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 12, 17 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
+"frames": [ ExtResource( 6 ) ],
+"loop": true,
+"name": "Idle_With_Gun",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
 "loop": true,
 "name": "Running",
@@ -47,8 +53,7 @@ position = Vector2( -8, 29 )
 scale = Vector2( 0.563125, 0.465062 )
 z_index = -1
 frames = SubResource( 7 )
-animation = "Running"
-playing = true
+animation = "Idle"
 
 [node name="Sword Hit" type="Area2D" parent="P1"]
 position = Vector2( 3.55161, 0 )

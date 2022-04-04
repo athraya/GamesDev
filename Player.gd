@@ -24,6 +24,7 @@ func _physics_process(delta):
 	#this controls the movement left and right
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= accleration
+		sprite.play("Running")
 	elif Input.is_action_pressed("move_right"):
 		velocity.x += accleration
 		sprite.play("Running")
