@@ -2,11 +2,11 @@ extends Area2D
 
 var speed
 
-#func _ready():
-	#if Global.player1_flipped == false:
-		#speed = 200
-	#elif Global.player1_flipped == true:
-		#speed = -200
+func _ready():
+	if speed > 0:
+		$Sprite.flip_v = false
+	elif Global.player1_flipped == true:
+		$Sprite.flip_v = true
 
 func _physics_process(delta):
 	position += transform.x * speed * delta
