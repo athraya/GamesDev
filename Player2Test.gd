@@ -80,7 +80,7 @@ func _on_P2_animation_finished():
 
 
 func _on_Hitbox_area_entered(area):
-	if area.is_in_group("punch") || area.is_in_group("bullet"):
+	if area.is_in_group("punchPlayer1") || area.is_in_group("bullet"):
 		death()
 		
 func death():

@@ -1,6 +1,12 @@
 extends Area2D
 
-var speed = 50
+var speed
+
+#func _ready():
+	#if Global.player1_flipped == false:
+		#speed = 200
+	#elif Global.player1_flipped == true:
+		#speed = -200
 
 func _physics_process(delta):
 	position += transform.x * speed * delta
