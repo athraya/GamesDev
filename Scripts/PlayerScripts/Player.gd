@@ -60,7 +60,7 @@ func _physics_process(delta):
 	#controls jump input
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		if Input.is_action_pressed("drop_through"):
-			set_collision_mask_bit(1, false)
+			$Feet.set_collision_mask_bit(1, false)
 		else:
 			velocity.y -= jumpForce
 			isJumping = true;
@@ -98,7 +98,7 @@ func _on_P1_animation_finished():
 		
 
 func _on_Hitbox_area_entered(area):
-	if area.is_in_group("punchPlayer2") || area.is_in_group("bullet"):
+	if area.is_in_group("punchPlayer2") || area.is_in_group("bullet") || area.is_in_group("oob"):
 		death()
 	elif area.is_in_group("gunPickUp"):
 		hasGun = true
