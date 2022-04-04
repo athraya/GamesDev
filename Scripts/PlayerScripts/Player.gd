@@ -104,7 +104,10 @@ func _on_Hitbox_area_entered(area):
 		hasGun = true
 		
 func death():
+	var main = load("res://scripts/MainScene2.gd").new()
 	yield(get_tree().create_timer(0.01), "timeout")
 	queue_free()
+	#main.end_round(2)
+	
 	#other things on player death here!!!
 	

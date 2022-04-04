@@ -17,6 +17,11 @@ animations = [ {
 "name": "Running",
 "speed": 10.0
 }, {
+"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "Punch",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 4 ) ],
 "loop": true,
 "name": "Idle",
@@ -25,11 +30,6 @@ animations = [ {
 "frames": [ ExtResource( 3 ), ExtResource( 1 ), ExtResource( 3 ) ],
 "loop": true,
 "name": "Shoot",
-"speed": 8.0
-}, {
-"frames": [ ExtResource( 3 ), ExtResource( 6 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "Punch",
 "speed": 8.0
 } ]
 
