@@ -11,7 +11,7 @@ var isAttacking = false;
 var isGrounded = true;
 var isJumping = false;
 
-onready var sprite = $P1  #references the sprite node
+onready var sprite = $P2 #references the sprite node (the arab)
 onready var punch_position = $PunchPosition
 
 var punch = preload("res://PunchPlayer1.tscn")
@@ -25,12 +25,10 @@ func _physics_process(delta):
 	velocity.x = 0
 
 	#this controls the movement left and right
-	if Input.is_action_pressed("move_left"):
+	if Input.is_action_pressed("p2_left"):
 		velocity.x -= accleration
-		Global.player1_flipped = true
-	elif Input.is_action_pressed("move_right"):
+	elif Input.is_action_pressed("p2_right"):
 		velocity.x += accleration
-		Global.player1_flipped = false
 		sprite.play("Running")
 	else:
 		velocity.x = lerp(velocity.x, 0,0.2)
@@ -54,7 +52,7 @@ func _physics_process(delta):
 	velocity.x = clamp(velocity.x, - speed, speed)
 	
 	#controls jump input
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	if Input.is_action_just_pressed("p2_jump") and is_on_floor():
 		if Input.is_action_pressed("drop_through"):
 			set_collision_mask_bit(1, false)
 
@@ -63,13 +61,9 @@ func _physics_process(delta):
 			isJumping = true;
 	if isJumping and velocity.y >= 0:
 		isJumping
-	if Input.is_action_just_pressed("P1_Attack"):
+	if Input.is_action_just_pressed("p2_Attack"):
 		sprite.play("Punch");
 		isAttacking = true;
-		if Global.player1_flipped == false:
-			punch_position.position.x = 19
-		else:
-			 punch_position.position.x = -19
 		var new_punch = punch.instance()
 		new_punch.position = punch_position.global_position
 		get_tree().current_scene.add_child(new_punch)
@@ -80,10 +74,10 @@ func _physics_process(delta):
 	#	elif velocity.y > 0 :
 	#		#$AnimationPlayer.play("Fall")
 
-func _on_P1_animation_finished():
+func _on_P2_animation_finished():
 	if sprite.animation == "Punch":
 		isAttacking = false;
-		
+
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("punch") || area.is_in_group("bullet"):
@@ -93,4 +87,3 @@ func death():
 	yield(get_tree().create_timer(0.01), "timeout")
 	queue_free()
 	#other things on player death here!!!
-	

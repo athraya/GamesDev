@@ -5,9 +5,13 @@
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 8.5, 19 )
 
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/Justinpxl.png-20c6ee3689582f6ebfebacbc84804c0c.stex"
+[sub_resource type="SpriteFrames" id=8]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 156.381, 113.479 )
@@ -24,11 +28,11 @@ script = ExtResource( 1 )
 position = Vector2( -7, 29 )
 shape = SubResource( 7 )
 
-[node name="P2" type="Sprite" parent="."]
+[node name="P2" type="AnimatedSprite" parent="."]
 position = Vector2( -3.85793, 29.0525 )
 scale = Vector2( 0.0395684, 0.0276824 )
 z_index = -1
-texture = SubResource( 2 )
+frames = SubResource( 8 )
 
 [node name="Sword Hit" type="Area2D" parent="P2"]
 
