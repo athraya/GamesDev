@@ -24,7 +24,7 @@ func _physics_process(delta):
 	#this controls the movement left and right
 	if Input.is_action_pressed("move_left"):
 		velocity.x -= accleration
-		sprite.play("Running")
+		
 	elif Input.is_action_pressed("move_right"):
 		velocity.x += accleration
 		sprite.play("Running")
@@ -49,18 +49,18 @@ func _physics_process(delta):
 	
 	#controls jump input
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		if Input.is_action_pressed("drop_through"):
-			set_collision_mask_bit(1, false)
-
-		else:
-			velocity.y -= jumpForce
-			isJumping = true;
+		velocity.y -= jumpForce
+		isJumping = true;
+	else:
+		isJumping = false;
+		
 	if isJumping and velocity.y >= 0:
 		isJumping
 	if Input.is_action_just_pressed("P1_Attack"):
 		sprite.play("Punch");
 		isAttacking = true;
-	
+	if Input.is_action_just_pressed("drop_through") and is_on_floor():
+		set_collision_mask_bit(2, false)
 #	if !is_on_floor():
 	#	if velocity.y < 0:
 	#		#$AnimationPlayer.play("Jump")

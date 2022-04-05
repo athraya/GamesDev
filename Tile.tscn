@@ -16,6 +16,8 @@ vframes = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
 position = Vector2( 7.62939e-06, 0 )
+collision_layer = 7
+collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
 position = Vector2( -7.62939e-06, 0 )
@@ -30,10 +32,10 @@ vframes = 2
 frame = 2
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
-collision_layer = 0
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/StaticBody2D"]
 position = Vector2( 0, -1.77463e-05 )
 rotation = 3.14159
 shape = SubResource( 1 )
-one_way_collision = true
