@@ -2,11 +2,16 @@
 
 importer="texture"
 type="StreamTexture"
-valid=false
+path="res://.import/Projectilepxl.png-f0bc6659a95070856fde72287f7a2bcb.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://Assets/__MACOSX/Sprites part2/._Sprite-0011-gun.png"
+source_file="res://Assets/Projectilepxl.png"
+dest_files=[ "res://.import/Projectilepxl.png-f0bc6659a95070856fde72287f7a2bcb.stex" ]
+
 [params]
 
 compress/mode=0

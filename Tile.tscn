@@ -6,7 +6,6 @@
 extents = Vector2( 16, 16 )
 
 [node name="Tile" type="StaticBody2D"]
-position = Vector2( -1, 0 )
 
 [node name="Ground" type="Sprite" parent="."]
 position = Vector2( 49, 48 )

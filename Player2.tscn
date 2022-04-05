@@ -1,45 +1,86 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=11 format=2]
 
-[ext_resource path="res://Player2.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Sprites part2/Sprite-0006-miner1-colourChange.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/PlayerScripts/Player2.gd" type="Script" id=2]
+[ext_resource path="res://Assets/Sprites part2/Sprite-0012-minergun.png" type="Texture" id=3]
+[ext_resource path="res://Assets/Sprites part2/Sprite-0007-miner2-colourchange.png" type="Texture" id=4]
+[ext_resource path="res://Assets/Sprites part2/Sprite-0008-miner3-colourchange.png" type="Texture" id=5]
+[ext_resource path="res://Assets/Sprites part2/Sprite-0010-miner1-running-colour-change.png" type="Texture" id=6]
 
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 8.5, 19 )
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 12, 17 )
 
-[sub_resource type="StreamTexture" id=2]
-flags = 4
-load_path = "res://.import/Justinpxl.png-20c6ee3689582f6ebfebacbc84804c0c.stex"
-
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 156.381, 113.479 )
+[sub_resource type="SpriteFrames" id=7]
+animations = [ {
+"frames": [ ExtResource( 1 ), ExtResource( 6 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "Running",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "Idle",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Shoot",
+"speed": 8.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Punch",
+"speed": 8.0
+} ]
 
 [sub_resource type="RectangleShape2D" id=4]
-extents = Vector2( 6, 2.5 )
+extents = Vector2( 8.5, 2.25 )
 
-[node name="Player2" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 12, 17 )
+
+[node name="Player" type="KinematicBody2D"]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource( 1 )
+script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( -7, 29 )
-shape = SubResource( 7 )
+shape = SubResource( 8 )
 
-[node name="P2" type="Sprite" parent="."]
-position = Vector2( -3.85793, 29.0525 )
-scale = Vector2( 0.0395684, 0.0276824 )
+[node name="P2" type="AnimatedSprite" parent="."]
+position = Vector2( 4, 2 )
+scale = Vector2( 0.563125, 0.465062 )
 z_index = -1
-texture = SubResource( 2 )
-
-[node name="Sword Hit" type="Area2D" parent="P2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="P2/Sword Hit"]
-position = Vector2( 324.831, -226.958 )
-shape = SubResource( 6 )
+frames = SubResource( 7 )
+animation = "Idle"
+playing = true
+offset = Vector2( 7.62939e-06, -3.8147e-06 )
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( -9, 45 )
+position = Vector2( 1, 15.5 )
 shape = SubResource( 4 )
 one_way_collision = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Hitbox" type="Area2D" parent="." groups=["hitbox"]]
+collision_layer = 16
+collision_mask = 16
+
+[node name="HitboxShape" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource( 9 )
+
+[node name="PunchPosition" type="Position2D" parent="."]
+position = Vector2( 16, 3 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="GunPosition" type="Position2D" parent="."]
+position = Vector2( 19, -1 )
+
+[connection signal="animation_finished" from="P2" to="." method="_on_P2_animation_finished"]
+[connection signal="area_entered" from="Hitbox" to="." method="_on_Hitbox_area_entered"]
