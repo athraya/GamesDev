@@ -30,11 +30,11 @@ func _physics_process(delta):
 	#this controls the movement left and right
 	if Input.is_action_pressed("p2_left"):
 		velocity.x -= accleration
-		Global.player1_flipped = true
+		Global.player2_flipped = true
 		sprite.play("Running")
 	elif Input.is_action_pressed("p2_right"):
 		velocity.x += accleration
-		Global.player1_flipped = false
+		Global.player2_flipped = false
 		sprite.play("Running")
 	else:
 		velocity.x = lerp(velocity.x, 0,0.2)
@@ -70,7 +70,7 @@ func _physics_process(delta):
 		if hasGun == false:
 			sprite.play("Punch");
 			isAttacking = true;
-			if Global.player1_flipped == false:
+			if Global.player2_flipped == false:
 				punch_position.position.x = 16
 			else:
 				 punch_position.position.x = -16
@@ -82,7 +82,7 @@ func _physics_process(delta):
 			isAttacking = true;
 			yield(get_tree().create_timer(.2), "timeout")
 			var new_bullet = bullet.instance()
-			if Global.player1_flipped == false:
+			if Global.player2_flipped == false:
 				gun_position.position.x = 19
 				new_bullet.speed = 420
 			else:

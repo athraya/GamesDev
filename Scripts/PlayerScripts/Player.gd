@@ -107,7 +107,7 @@ func death():
 	var main = load("res://scripts/MainScene2.gd").new()
 	yield(get_tree().create_timer(0.01), "timeout")
 	queue_free()
-	#main.end_round(2)
+	#main.end_round()
 	
 	#other things on player death here!!!
 	
