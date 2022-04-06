@@ -5,9 +5,15 @@
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=3]
 [ext_resource path="res://GunPickUp.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Scripts/MainScene2.gd" type="Script" id=5]
+
+[ext_resource path="res://Scripts/pressR.gd" type="Script" id=6]
+[ext_resource path="res://Scripts/ScoreTitle.gd" type="Script" id=7]
+[ext_resource path="res://ScoreTens.gd" type="Script" id=8]
+[ext_resource path="res://Scripts/ScoreOnes.gd" type="Script" id=9]
 [ext_resource path="res://Assets/2020-03-22_-_A_Bit_Of_Hope_-_David_Fesliyan.mp3" type="AudioStream" id=6]
 [ext_resource path="res://Assets/Sprite-0001-background2.png" type="Texture" id=7]
 [ext_resource path="res://Ihopeitworkstileset.tres" type="TileSet" id=8]
+
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 182, 32.5 )
@@ -79,6 +85,49 @@ shape = SubResource( 1 )
 position = Vector2( 1267, 294 )
 shape = SubResource( 2 )
 
+
+[node name="ScoreTitle" type="Sprite" parent="."]
+position = Vector2( 500, 80 )
+script = ExtResource( 7 )
+
+[node name="pressR" type="Sprite" parent="."]
+position = Vector2( 500, 500 )
+script = ExtResource( 6 )
+
+[node name="p1ScoreTens" type="Sprite" parent="."]
+position = Vector2( 300, 200 )
+script = ExtResource( 8 )
+
+[node name="p2ScoreTens" type="Sprite" parent="."]
+position = Vector2( 600, 200 )
+script = ExtResource( 8 )
+
+[node name="p1ScoreOnes" type="Sprite" parent="."]
+position = Vector2( 382, 200 )
+script = ExtResource( 9 )
+
+[node name="p2ScoreOnes" type="Sprite" parent="."]
+position = Vector2( 682, 200 )
+script = ExtResource( 9 )
+
+[connection signal="reset" from="." to="Area2D" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="Area2D2" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="Area2D3" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="ScoreTitle" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="p1ScoreTens" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="p1ScoreOnes" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="p2ScoreTens" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="p2ScoreOnes" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="pressR" method="_on_MainScene_reset"]
+[connection signal="score" from="." to="ScoreTitle" method="_on_MainScene_score"]
+[connection signal="score" from="." to="p1ScoreTens" method="_on_MainScene_score"]
+[connection signal="score" from="." to="p1ScoreOnes" method="_on_MainScene_score"]
+[connection signal="score" from="." to="p2ScoreTens" method="_on_MainScene_score"]
+[connection signal="score" from="." to="p2ScoreOnes" method="_on_MainScene_score"]
+[connection signal="score" from="." to="pressR" method="_on_MainScene_score"]
+[connection signal="death1" from="Player" to="." method="_on_Player_death1"]
+[connection signal="death2" from="Player2" to="." method="_on_Player2_death2"]
+
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -95,3 +144,4 @@ pause_mode = 2
 stream = ExtResource( 6 )
 volume_db = -11.0
 autoplay = true
+
