@@ -13,6 +13,7 @@ var isJumping = false;
 var hasGun = false
 signal death1
 
+onready var startPostion1 = self.get_position()
 onready var sprite = $P1  #references the sprite node
 onready var punch_position = $PunchPosition
 onready var gun_position = $GunPosition
@@ -109,7 +110,6 @@ func _on_Hitbox_area_entered(area):
 		
 func death():
 	yield(get_tree().create_timer(0.01), "timeout")
-	queue_free()
 	emit_signal("death1")
 
 	

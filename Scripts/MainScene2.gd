@@ -33,8 +33,8 @@ func _physics_process(delta):
 			add_child(player2)
 		
 		emit_signal("reset")
-		player1.position = Vector2(172, 430)
-		player2.position = Vector2(820, 430)
+		player1.position = Vector2(player1.startPostion1)
+		player2.position = Vector2(player2.startPostion)
 		player1.hasGun = false
 		player2.hasGun = false
 		currentDeath = 0
@@ -58,7 +58,7 @@ func _on_Player2_death2():
 	remove_child(player2)
 	#yield(get_tree().create_timer(0.10), "timeout")
 	scoreOnesP1 += 1
-	currentDeath += 1
+	currentDeath += 2
 	
 	if scoreOnesP1 == 10:
 		scoreOnesP1 = 0
