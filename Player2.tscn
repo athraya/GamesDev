@@ -6,13 +6,18 @@
 [ext_resource path="res://Assets/Sprites part2/Sprite-0007-miner2-colourchange.png" type="Texture" id=4]
 [ext_resource path="res://Assets/Sprites part2/Sprite-0008-miner3-colourchange.png" type="Texture" id=5]
 [ext_resource path="res://Assets/Sprites part2/Sprite-0010-miner1-running-colour-change.png" type="Texture" id=6]
-[ext_resource path="res://Assets/Barrett-Player2.mp3" type="AudioStream" id=7]
+[ext_resource path="res://Assets/Desert-Eagle-.50-AE-Close-Single-Gunshot-C-www.fesliyanstudios.com.mp3" type="AudioStream" id=7]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 12, 17 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "Punch",
+"speed": 8.0
+}, {
 "frames": [ ExtResource( 1 ) ],
 "loop": true,
 "name": "Idle",
@@ -27,11 +32,6 @@ animations = [ {
 "loop": true,
 "name": "Running",
 "speed": 10.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 4 ) ],
-"loop": true,
-"name": "Punch",
-"speed": 8.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=4]
