@@ -106,7 +106,7 @@ func _on_Hitbox_area_entered(area):
 		hasGun = true
 
 func death():
-	yield(get_tree().create_timer(0.01), "timeout")
+	yield(get_tree().create_timer(0.02), "timeout")
 	emit_signal("death2")
 	#other things on player death here!!!
 	
