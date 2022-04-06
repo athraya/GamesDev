@@ -65,3 +65,9 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="OOB"]
 position = Vector2( 1267, 294 )
 shape = SubResource( 2 )
+
+[connection signal="reset" from="." to="Area2D" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="Area2D2" method="_on_MainScene_reset"]
+[connection signal="reset" from="." to="Area2D3" method="_on_MainScene_reset"]
+[connection signal="death1" from="Player" to="." method="_on_Player_death1"]
+[connection signal="death2" from="Player2" to="." method="_on_Player2_death2"]

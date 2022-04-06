@@ -11,6 +11,7 @@ var isAttacking = false;
 var isGrounded = true;
 var isJumping = false;
 var hasGun = false
+signal death1
 
 onready var sprite = $P1  #references the sprite node
 onready var punch_position = $PunchPosition
@@ -104,10 +105,7 @@ func _on_Hitbox_area_entered(area):
 		hasGun = true
 		
 func death():
-	var main = load("res://scripts/MainScene2.gd").new()
 	yield(get_tree().create_timer(0.01), "timeout")
-	queue_free()
-	#main.end_round()
-	
+	emit_signal("death1")
 	#other things on player death here!!!
 	
