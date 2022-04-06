@@ -110,6 +110,7 @@ func _on_Hitbox_area_entered(area):
 func death():
 	yield(get_tree().create_timer(0.01), "timeout")
 	queue_free()
+	emit_signal("death1")
 
 	
 	#main.end_round()

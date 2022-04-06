@@ -56,8 +56,9 @@ func _on_Player_death1():
 
 func _on_Player2_death2():
 	remove_child(player2)
+	#yield(get_tree().create_timer(0.10), "timeout")
 	scoreOnesP1 += 1
-	currentDeath += 2
+	currentDeath += 1
 	
 	if scoreOnesP1 == 10:
 		scoreOnesP1 = 0
