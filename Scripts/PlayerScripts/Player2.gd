@@ -11,6 +11,7 @@ var isAttacking = false;
 var isGrounded = true;
 var isJumping = false;
 var hasGun = false
+signal death2
 
 onready var sprite = $P2  #references the sprite node
 onready var punch_position = $PunchPosition
@@ -97,16 +98,15 @@ func _physics_process(delta):
 func _on_P2_animation_finished():
 	if sprite.animation == "Punch" || sprite.animation == "Shoot":
 		isAttacking = false;
-		
 
 func _on_Hitbox_area_entered(area):
 	if area.is_in_group("punchPlayer1") || area.is_in_group("bullet") || area.is_in_group("oob"):
 		death()
 	elif area.is_in_group("gunPickUp"):
 		hasGun = true
-		
+
 func death():
 	yield(get_tree().create_timer(0.01), "timeout")
-	queue_free()
+	emit_signal("death2")
 	#other things on player death here!!!
 	
