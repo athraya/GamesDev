@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Barrett-Player1.mp3-3b8c2a43c2988c85e5eabe9384bf0c05.mp3str"
+
+[deps]
+
+source_file="res://Assets/Barrett-Player1.mp3"
+dest_files=[ "res://.import/Barrett-Player1.mp3-3b8c2a43c2988c85e5eabe9384bf0c05.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

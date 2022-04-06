@@ -80,6 +80,8 @@ func _physics_process(delta):
 			get_tree().current_scene.add_child(new_punch)
 		else:
 			sprite.play("Shoot");
+			# Play attack sound
+			$AttackSound.play();
 			isAttacking = true;
 			yield(get_tree().create_timer(.2), "timeout")
 			var new_bullet = bullet.instance()

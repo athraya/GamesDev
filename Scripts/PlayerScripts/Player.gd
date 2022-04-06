@@ -57,11 +57,12 @@ func _physics_process(delta):
 	if velocity.y > fallSpeed:
 		velocity.y = fallSpeed 
 	velocity.x = clamp(velocity.x, - speed, speed)
-	
+	if Input.is_action_just_pressed("drop_through"):
+		$P1/Feet.set_collision_mask_bit(2, false)
 	#controls jump input
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		if Input.is_action_pressed("drop_through"):
-			$Feet.set_collision_mask_bit(1, false)
+			$Feet.set_collision_mask_bit(2, false)
 		else:
 			velocity.y -= jumpForce
 			isJumping = true;
@@ -80,6 +81,8 @@ func _physics_process(delta):
 			get_tree().current_scene.add_child(new_punch)
 		else:
 			sprite.play("Shoot");
+			# Play attack sound
+			$SoundAttack.play()
 			isAttacking = true;
 			yield(get_tree().create_timer(.2), "timeout")
 			var new_bullet = bullet.instance()
@@ -107,5 +110,7 @@ func _on_Hitbox_area_entered(area):
 func death():
 	yield(get_tree().create_timer(0.01), "timeout")
 	emit_signal("death1")
+	queue_free()
+	#main.end_round()
 	#other things on player death here!!!
 	

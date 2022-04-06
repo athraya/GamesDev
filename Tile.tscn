@@ -1,39 +1,37 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://Assets/Sprite-0002-sandblock64px.png" type="Texture" id=1]
+[ext_resource path="res://Assets/Sprite-0001-sandblock32px.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 16, 16 )
 
-[node name="Tile" type="StaticBody2D"]
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 32, 32 )
+
+[node name="Node" type="Node2D"]
+
+[node name="Platform2" type="Sprite" parent="."]
+position = Vector2( 224, 32 )
+scale = Vector2( 2, 2 )
+texture = ExtResource( 2 )
+region_rect = Rect2( 0, 0, 64, 64 )
+
+[node name="area2D" type="Area2D" parent="Platform2"]
+collision_layer = 20
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2/area2D"]
+shape = SubResource( 1 )
 
 [node name="Ground" type="Sprite" parent="."]
-position = Vector2( 49, 48 )
+position = Vector2( 96, 32 )
 texture = ExtResource( 1 )
-hframes = 2
-vframes = 2
+region_rect = Rect2( 0, 0, 64, 64 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Ground"]
-position = Vector2( 7.62939e-06, 0 )
+collision_layer = 7
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground/StaticBody2D"]
-position = Vector2( -7.62939e-06, 0 )
-shape = SubResource( 1 )
-
-[node name="Platform" type="Sprite" parent="."]
-position = Vector2( 49, 0 )
-scale = Vector2( 1.08333, 1 )
-texture = ExtResource( 1 )
-hframes = 2
-vframes = 2
-frame = 2
-
-[node name="StaticBody2D" type="StaticBody2D" parent="Platform"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Platform/StaticBody2D"]
-position = Vector2( 0, -1.77463e-05 )
-rotation = 3.14159
-shape = SubResource( 1 )
-one_way_collision = true
+shape = SubResource( 2 )
